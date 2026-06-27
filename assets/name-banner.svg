@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 300" width="1280" height="300"
+     font-family="'Arial Black', 'Helvetica Neue', Helvetica, Arial, sans-serif"
+     role="img" aria-label="MARK STEVENS">
+  <defs>
+    <!-- Soft-edged band: black -> white -> black across the rect width, so the
+         sweep fades in and out instead of a hard line -->
+    <linearGradient id="feather" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0"    stop-color="#000000"/>
+      <stop offset="0.5"  stop-color="#ffffff"/>
+      <stop offset="1"    stop-color="#000000"/>
+    </linearGradient>
+
+    <!-- The moving mask. The diagonal band slides left->right, then rests
+         off-screen so the sweep only fires every couple of seconds. -->
+    <mask id="sweep" maskUnits="userSpaceOnUse" x="0" y="0" width="1280" height="300">
+      <rect x="0" y="0" width="1280" height="300" fill="#000000"/>
+      <g transform="rotate(-18 640 150)">
+        <rect y="-320" width="260" height="940" fill="url(#feather)">
+          <animate attributeName="x"
+                   values="-640;1540;1540"
+                   keyTimes="0;0.62;1"
+                   dur="10s"
+                   calcMode="spline"
+                   keySplines="0.45 0 0.2 1; 0 0 1 1"
+                   repeatCount="indefinite"/>
+        </rect>
+      </g>
+    </mask>
+  </defs>
+
+  <!-- Background plate -->
+  <rect x="0" y="0" width="1280" height="300" rx="20" fill="#0d1117"/>
+
+  <!-- Chromatic-aberration layers: only visible inside the moving band.
+       Red shifted left, cyan shifted right, so colored fringes peek out
+       around the white text as the sweep passes over it. -->
+  <g mask="url(#sweep)">
+    <text x="640" y="220" text-anchor="middle" textLength="1140" lengthAdjust="spacingAndGlyphs"
+          font-weight="900" font-size="190" fill="#ff2d4d" opacity="0.9"
+          transform="translate(-14,0)">MARK STEVENS</text>
+    <text x="640" y="220" text-anchor="middle" textLength="1140" lengthAdjust="spacingAndGlyphs"
+          font-weight="900" font-size="190" fill="#1ff0ff" opacity="0.9"
+          transform="translate(14,0)">MARK STEVENS</text>
+  </g>
+
+  <!-- Solid white name on top -->
+  <text x="640" y="220" text-anchor="middle" textLength="1140" lengthAdjust="spacingAndGlyphs"
+        font-weight="900" font-size="190" fill="#ffffff">MARK STEVENS</text>
+</svg>

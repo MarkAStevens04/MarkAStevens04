@@ -1,8 +1,8 @@
 <!-- Name Banner -->
 <p align="center">
   <img
-    src="./assets/banner (1).svg"
-    alt="The name 'Mark Stevens' with a blue and red gradient effect scrolling across."
+    src="./assets/name-banner.svg"
+    alt="MARK STEVENS in bold white capitals, with a diagonal chromatic-aberration sweep crossing the name every few seconds."
   />
 </p>
 
