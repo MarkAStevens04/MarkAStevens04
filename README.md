@@ -71,6 +71,12 @@
 
 <p align="center"><b>🧬 &nbsp;Computational Biology</b></p>
 <p align="center">
+  <a href="https://deepmind.google/science/alphafold/"><img src="https://img.shields.io/badge/AlphaFold-3A7CA5?style=for-the-badge" /></a>
+  <a href="https://github.com/jwohlwend/boltz"><img src="https://img.shields.io/badge/Boltz-2C7A7B?style=for-the-badge" /></a>
+  <a href="https://www.gromacs.org/"><img src="https://img.shields.io/badge/GROMACS-004F9F?style=for-the-badge" /></a>
+  <a href="https://openmm.org/"><img src="https://img.shields.io/badge/OpenMM-1B6CA8?style=for-the-badge" /></a>
+  <a href="https://vina.scripps.edu/"><img src="https://img.shields.io/badge/AutoDock_Vina-0F9D58?style=for-the-badge" /></a>
+  <a href="https://www.rdkit.org/"><img src="https://img.shields.io/badge/RDKit-B22222?style=for-the-badge" /></a>
   <a href="https://biopython.org/"><img src="https://img.shields.io/badge/Biopython-1F4E79?style=for-the-badge" /></a>
   <a href="https://www.uniprot.org/"><img src="https://img.shields.io/badge/UniProt-00639A?style=for-the-badge" /></a>
   <a href="https://www.rcsb.org/"><img src="https://img.shields.io/badge/RCSB_PDB-1565C0?style=for-the-badge" /></a>
@@ -78,12 +84,6 @@
   <a href="https://www.opentargets.org/"><img src="https://img.shields.io/badge/Open_Targets-6E4B9E?style=for-the-badge" /></a>
   <a href="http://sabiork.h-its.org/"><img src="https://img.shields.io/badge/SABIO--RK-D35400?style=for-the-badge" /></a>
   <a href="https://www.benchling.com/"><img src="https://img.shields.io/badge/Benchling-1F58C6?style=for-the-badge" /></a>
-  <a href="https://deepmind.google/science/alphafold/"><img src="https://img.shields.io/badge/AlphaFold-3A7CA5?style=for-the-badge" /></a>
-  <a href="https://github.com/jwohlwend/boltz"><img src="https://img.shields.io/badge/Boltz-2C7A7B?style=for-the-badge" /></a>
-  <a href="https://www.rdkit.org/"><img src="https://img.shields.io/badge/RDKit-B22222?style=for-the-badge" /></a>
-  <a href="https://openmm.org/"><img src="https://img.shields.io/badge/OpenMM-1B6CA8?style=for-the-badge" /></a>
-  <a href="https://www.gromacs.org/"><img src="https://img.shields.io/badge/GROMACS-004F9F?style=for-the-badge" /></a>
-  <a href="https://vina.scripps.edu/"><img src="https://img.shields.io/badge/AutoDock_Vina-0F9D58?style=for-the-badge" /></a>
   <a href="https://www.cgl.ucsf.edu/chimerax/"><img src="https://img.shields.io/badge/ChimeraX-7B2D8E?style=for-the-badge" /></a>
 </p>
 
