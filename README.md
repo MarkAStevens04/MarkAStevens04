@@ -9,7 +9,7 @@
 <!-- HERO: live 3D render of HIV-1 protease -->
 <p align="center">
   <img
-    src="./assets/hiv-protease.svg"
+    src="./assets/hiv-protease.webp"
     width="540"
     alt="Animated 3D render of HIV-1 protease (PDB 1HSG), the homodimer tumbling in space with the inhibitor indinavir bound in the active site, drawn with a chromatic-aberration glow."
   />

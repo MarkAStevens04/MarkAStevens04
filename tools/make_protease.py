@@ -27,6 +27,8 @@ SPIN_DIRECTION  = +1     # +1 or -1 to reverse the orbit
 
 PDB = "tools/1hsg.pdb"
 OUT_SVG = "assets/hiv-protease.svg"
+OUT_WEBP = "assets/hiv-protease.webp"   # raster hero: effects baked into pixels
+WEBP_QUALITY = 88                       # lossy WebP w/ alpha; 80-92 is the sweet spot
 PREVIEW = os.environ.get("PREVIEW_PNG", "preview.png")
 
 # ---- look & feel ----------------------------------------------------------
@@ -44,6 +46,10 @@ CROP_PAD = 16             # px of breathing room kept around the molecule
 
 STICK_RAD_ANG = 0.34      # indinavir bond radius (Angstrom) -> stick thickness
 BOND_MAX_ANG = 1.85       # heavy-atom distance below which atoms are "bonded"
+
+# ---- raster post-fx (baked into the WebP) ---------------------------------
+BLOOM_BLUR   = 0.0        # px radius of the soft glow (was 6.0); 0 = crisp, no bloom
+CHROMA_SHIFT = 0.0        # px of R/B channel split (was 2.6); 0 = no chromatic aberration
 
 CHAIN_COL = {"A": (40, 224, 208), "B": (176, 108, 255)}   # teal / violet
 ELEM_COL = {"C": (228, 232, 240), "N": (91, 140, 255),
@@ -228,10 +234,15 @@ def write_svg(bb, lig_atoms, bonds):
     if not TRANSPARENT_BG:
         L.append(f'<rect x="0" y="{top:.0f}" width="{W}" height="{vh:.0f}" fill="{hexc(SHADE_BG)}"/>')
 
+    # One filter for the whole flipbook, not one per frame: only a single frame
+    # is ever visible (the rest are opacity:0 and contribute nothing), so the
+    # browser composites ONE filtered region instead of N_FRAMES of them. This
+    # is the difference between the page running smooth and grinding to a halt.
     keytimes = ";".join(f"{i/N_FRAMES:.4f}" for i in range(N_FRAMES))
+    L.append('<g filter="url(#fx)">')
     for f, prims in enumerate(frames):
         vals = ";".join("1" if i == f else "0" for i in range(N_FRAMES))
-        g = [f'<g opacity="{1 if f==0 else 0}" filter="url(#fx)">']
+        g = [f'<g opacity="{1 if f==0 else 0}">']
         for pr in prims:
             if pr[0] == "l":
                 _, _z, x1, y1, x2, y2, w, col = pr
@@ -252,6 +263,7 @@ def write_svg(bb, lig_atoms, bonds):
                  f'keyTimes="{keytimes}" values="{vals}"/>')
         g.append('</g>')
         L.append("".join(g))
+    L.append('</g>')   # close the single shared-filter wrapper
 
     # caption: dark outline (paint-order=stroke) so it reads on light OR dark themes
     if SHOW_CAPTION:
@@ -265,15 +277,17 @@ def write_svg(bb, lig_atoms, bonds):
     os.makedirs(os.path.dirname(OUT_SVG), exist_ok=True)
     open(OUT_SVG, "w", encoding="utf-8").write("\n".join(L))
     print("wrote", OUT_SVG, "%.0f KB" % (os.path.getsize(OUT_SVG) / 1024))
-    return frames
+    return frames, top, bot
 
-# ---- PIL preview over split dark/light panels (to vet transparency) -------
-def preview(frames, idx=0):
+# ---- raster rendering (effects baked into pixels) -------------------------
+def render_frame_rgba(prims, SS=2):
+    """Rasterize ONE frame to a W x H RGBA image with the glow + chromatic
+    aberration baked into the pixels -- the exact look the SVG <filter> made,
+    but computed once here instead of live in the browser every frame."""
     from PIL import Image, ImageDraw, ImageFilter
-    SS = 2
     layer = Image.new("RGBA", (W * SS, H * SS), (0, 0, 0, 0))
     dr = ImageDraw.Draw(layer, "RGBA")
-    for pr in frames[idx]:
+    for pr in prims:
         if pr[0] == "l":
             _, _z, x1, y1, x2, y2, w, col = pr
             dr.line([x1*SS, y1*SS, x2*SS, y2*SS], fill=col + (255,),
@@ -289,16 +303,39 @@ def preview(frames, idx=0):
                 hx, hy = x-rr*0.28, y-rr*0.32
                 dr.ellipse([hx-hr, hy-hr, hx+hr, hy+hr], fill=(255, 255, 255, a))
     rgba = np.asarray(layer, np.float32)
-    glow = np.asarray(layer.filter(ImageFilter.GaussianBlur(6*SS)), np.float32)
-    a = rgba[:, :, 3:4]/255; ga = glow[:, :, 3:4]/255
-    rgb = rgba[:, :, :3]; grgb = glow[:, :, :3]
-    out_rgb = 255*(1-(1-rgb/255*a)*(1-grgb/255*ga*0.9))
-    out_a = np.clip(a + ga*0.9, 0, 1)
-    dx = int(2.6*SS)
-    out_rgb[:, :, 0] = np.roll(out_rgb[:, :, 0], dx, axis=1)
-    out_rgb[:, :, 2] = np.roll(out_rgb[:, :, 2], -dx, axis=1)
-    mol = np.concatenate([out_rgb, out_a*255], axis=2)
-    mol_img = Image.fromarray(np.clip(mol, 0, 255).astype(np.uint8)).resize((W, H), Image.LANCZOS)
+    if BLOOM_BLUR > 0:                                  # optional soft glow / bloom
+        glow = np.asarray(layer.filter(ImageFilter.GaussianBlur(BLOOM_BLUR*SS)), np.float32)
+        a = rgba[:, :, 3:4]/255; ga = glow[:, :, 3:4]/255
+        rgb = rgba[:, :, :3]; grgb = glow[:, :, :3]
+        out_rgb = 255*(1-(1-rgb/255*a)*(1-grgb/255*ga*0.9))
+        out_a = np.clip(a + ga*0.9, 0, 1) * 255
+    else:                                               # crisp: straight shapes, no bloom
+        out_rgb = rgba[:, :, :3].copy()
+        out_a = rgba[:, :, 3:4]
+    if CHROMA_SHIFT > 0:                                # optional chromatic aberration
+        dx = int(CHROMA_SHIFT*SS)
+        out_rgb[:, :, 0] = np.roll(out_rgb[:, :, 0], dx, axis=1)
+        out_rgb[:, :, 2] = np.roll(out_rgb[:, :, 2], -dx, axis=1)
+    mol = np.concatenate([out_rgb, out_a], axis=2)
+    return Image.fromarray(np.clip(mol, 0, 255).astype(np.uint8)).resize((W, H), Image.LANCZOS)
+
+def write_webp(frames, top, bot):
+    """Assemble all frames into a looping, transparent animated WebP. The
+    browser GPU-composites a single image loop -- no live SVG filtering -- so
+    it stays smooth while keeping the glow + chromatic aberration."""
+    y0, y1 = int(round(top)), int(round(bot))
+    imgs = [render_frame_rgba(prims).crop((0, y0, W, y1)) for prims in frames]
+    dur = int(round(1000 * TURN_SECONDS / N_FRAMES))   # ms per frame
+    imgs[0].save(OUT_WEBP, format="WebP", save_all=True, append_images=imgs[1:],
+                 duration=dur, loop=0, lossless=False, quality=WEBP_QUALITY,
+                 method=6, minimize_size=True)
+    print("wrote", OUT_WEBP, "%.0f KB" % (os.path.getsize(OUT_WEBP) / 1024),
+          f"  {W}x{y1 - y0}  {len(imgs)} frames @ {dur}ms")
+
+# ---- PIL preview over split dark/light panels (to vet transparency) -------
+def preview(frames, idx=0):
+    from PIL import Image, ImageDraw
+    mol_img = render_frame_rgba(frames[idx])
     # composite over split dark(left)/light(right) to mimic GitHub themes
     bg = Image.new("RGB", (W, H), (13, 17, 23))
     ImageDraw.Draw(bg).rectangle([W//2, 0, W, H], fill=(255, 255, 255))
@@ -464,6 +501,7 @@ def export_orient_html(bb, lig_atoms, bonds, out="tools/orient.html"):
 if __name__ == "__main__":
     bb, lig_atoms, bonds = build_scene()
     print(f"backbone spheres: {len(bb)}  ligand atoms: {len(lig_atoms)}  bonds: {len(bonds)}")
-    frames = write_svg(bb, lig_atoms, bonds)
+    frames, top, bot = write_svg(bb, lig_atoms, bonds)
+    write_webp(frames, top, bot)
     preview(frames, idx=0)
     export_orient_html(bb, lig_atoms, bonds)
