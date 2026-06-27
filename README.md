@@ -1,7 +1,7 @@
 <!-- Name Banner -->
 <p align="center">
   <img
-    src="./assets/banner.svg"
+    src="./assets/banner (1).svg"
     alt="The name 'Mark Stevens' with a blue and red gradient effect scrolling across."
   />
 </p>
