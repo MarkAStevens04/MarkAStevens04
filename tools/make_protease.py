@@ -33,7 +33,7 @@ PREVIEW = os.environ.get("PREVIEW_PNG", "preview.png")
 
 # ---- look & feel ----------------------------------------------------------
 W = H = 720
-N_FRAMES = 30
+N_FRAMES = 60             # doubled for a smoother spin (125ms/frame over the same turn)
 TURN_SECONDS = 7.5
 SUBDIV = 3                 # backbone points between consecutive CA atoms
 FOCAL = 130.0             # perspective strength

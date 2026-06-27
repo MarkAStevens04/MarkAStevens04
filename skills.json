@@ -1,0 +1,20 @@
+{
+  "_comment": [
+    "Outline color for each skill chip on the Experience Timeline.",
+    "Edit freely — add any skill name and a hex color. Lookup is case-insensitive.",
+    "Any skill not listed here uses 'default'. Stick to the palette",
+    "(white #ffffff, red #ff5757, blue #5170ff) to keep the minimalist look,",
+    "or use any hex you like."
+  ],
+  "default": "#ffffff",
+  "colors": {
+    "Python": "#5170ff",
+    "C": "#5170ff",
+    "TypeScript": "#5170ff",
+    "React": "#5170ff",
+    "FastAPI": "#5170ff",
+    "PyTorch": "#ff5757",
+    "CUDA": "#ff5757",
+    "Supabase": "#ff5757"
+  }
+}

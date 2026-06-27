@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 648" width="860" height="648" font-family="'Segoe UI', 'Segoe UI Bold', Tahoma, Geneva, Verdana, sans-serif">
+<rect width="860" height="648" rx="18" fill="#000000"/>
+<text x="44" y="56" font-size="30" font-weight="700" fill="#ffffff" letter-spacing="0.5">Experience Timeline</text>
+<line x1="46" y1="86.5" x2="46" y2="626.0" stroke="#ffffff" stroke-opacity="1.0" stroke-width="2.5"/>
+<a href="https://github.com/MarkAStevens04/cloudflare-kinetics-editor"><text x="66" y="111.0" font-size="19" font-weight="700" fill="#ffffff">BioBuilder</text></a>
+<text x="66" y="124.0" font-size="11.5" fill="#ffffff" fill-opacity="0.35">May 2026 – Present</text>
+<text x="66" y="147.0" font-size="14" fill="#ffffff" fill-opacity="0.7">Fully web-based biochemical kinetics editor with 300+ monthly visitors.</text>
+<rect x="66.0" y="159.0" width="64.2" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="98.1" y="171.9" text-anchor="middle" font-size="11" fill="#ffffff">TypeScript</text>
+<rect x="137.2" y="159.0" width="38.2" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="156.3" y="171.9" text-anchor="middle" font-size="11" fill="#ffffff">React</text>
+<rect x="182.4" y="159.0" width="57.3" height="19" rx="10" fill="none" stroke="#ff5757"/><text x="211.0" y="171.9" text-anchor="middle" font-size="11" fill="#ffffff">Supabase</text>
+<rect x="246.7" y="159.0" width="58.4" height="19" rx="10" fill="none" stroke="#ffffff"/><text x="275.9" y="171.9" text-anchor="middle" font-size="11" fill="#ffffff">cloudflare</text>
+<rect x="312.1" y="159.0" width="43.9" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="334.0" y="171.9" text-anchor="middle" font-size="11" fill="#ffffff">Python</text>
+<rect x="363.0" y="159.0" width="50.7" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="388.3" y="171.9" text-anchor="middle" font-size="11" fill="#ffffff">FastAPI</text>
+<a href="https://github.com/MarkAStevens04/RGFN-Fork-v1"><text x="66" y="247.0" font-size="19" font-weight="700" fill="#ffffff">RGFN Batched Learning</text></a>
+<text x="66" y="260.0" font-size="11.5" fill="#ffffff" fill-opacity="0.35">May 2026 – Present</text>
+<text x="66" y="283.0" font-size="14" fill="#ffffff" fill-opacity="0.7">Repository for LSD-Flow. Generative chemistry machine-learning model that builds chemicals from reactions and</text>
+<text x="66" y="303.0" font-size="14" fill="#ffffff" fill-opacity="0.7">building blocks.</text>
+<rect x="66.0" y="315.0" width="43.9" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="87.9" y="327.9" text-anchor="middle" font-size="11" fill="#ffffff">Python</text>
+<rect x="116.9" y="315.0" width="51.8" height="19" rx="10" fill="none" stroke="#ff5757"/><text x="142.8" y="327.9" text-anchor="middle" font-size="11" fill="#ffffff">PyTorch</text>
+<rect x="175.7" y="315.0" width="39.0" height="19" rx="10" fill="none" stroke="#ff5757"/><text x="195.2" y="327.9" text-anchor="middle" font-size="11" fill="#ffffff">CUDA</text>
+<rect x="221.7" y="315.0" width="80.7" height="19" rx="10" fill="none" stroke="#ffffff"/><text x="262.1" y="327.9" text-anchor="middle" font-size="11" fill="#ffffff">Autodock Vina</text>
+<a href="https://github.com/MarkAStevens04/UHN_Technical_Test"><text x="66" y="403.0" font-size="19" font-weight="700" fill="#ffffff">NTv2 Interpretability</text></a>
+<text x="66" y="416.0" font-size="11.5" fill="#ffffff" fill-opacity="0.35">Jan 2026 – Feb 2026</text>
+<text x="66" y="439.0" font-size="14" fill="#ffffff" fill-opacity="0.7">Discovered latent features in DNA foundation model correlated with diseased DNA by training a sparse autoencoder</text>
+<text x="66" y="459.0" font-size="14" fill="#ffffff" fill-opacity="0.7">on NTv2&#x27;s embeddings.</text>
+<rect x="66.0" y="471.0" width="43.9" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="87.9" y="483.9" text-anchor="middle" font-size="11" fill="#ffffff">Python</text>
+<rect x="116.9" y="471.0" width="51.8" height="19" rx="10" fill="none" stroke="#ff5757"/><text x="142.8" y="483.9" text-anchor="middle" font-size="11" fill="#ffffff">PyTorch</text>
+<rect x="175.7" y="471.0" width="22.4" height="19" rx="10" fill="none" stroke="#ffffff"/><text x="186.9" y="483.9" text-anchor="middle" font-size="11" fill="#ffffff">git</text>
+<a href="https://github.com/MarkAStevens04/third"><text x="66" y="559.0" font-size="19" font-weight="700" fill="#ffffff">Shell from scratch</text></a>
+<text x="66" y="572.0" font-size="11.5" fill="#ffffff" fill-opacity="0.35">Jan 2024 – Apr 2024</text>
+<text x="66" y="595.0" font-size="14" fill="#ffffff" fill-opacity="0.7">Implemented a shell from scratch in C, supporting basic commands, piping, networking, and parent-child processes.</text>
+<rect x="66.0" y="607.0" width="17.3" height="19" rx="10" fill="none" stroke="#5170ff"/><text x="74.6" y="619.9" text-anchor="middle" font-size="11" fill="#ffffff">C</text>
+<rect x="90.3" y="607.0" width="22.4" height="19" rx="10" fill="none" stroke="#ffffff"/><text x="101.5" y="619.9" text-anchor="middle" font-size="11" fill="#ffffff">git</text>
+<circle cx="46" cy="104.5" r="7" fill="#ff5757"/>
+<circle cx="46" cy="240.5" r="7" fill="#5170ff"/>
+<circle cx="46" cy="396.5" r="7" fill="#ff5757"/>
+<circle cx="46" cy="552.5" r="7" fill="#5170ff"/>
+</svg>

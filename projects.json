@@ -1,0 +1,52 @@
+{
+  "_comment": [
+    "Projects shown on the README as a generated Experience Timeline SVG.",
+    "Edit this file, commit, and push -- assets/projects-timeline.svg and the",
+    "README section rebuild automatically via .github/workflows/readme.yml.",
+    "To rebuild locally instead:  python tools/build_readme.py",
+    "",
+    "Fields per project:",
+    "  title        (required)  display name",
+    "  description  (required)  one line; wraps automatically",
+    "  start        (required)  start date, e.g. '2024' or '2024-06' (orders the timeline)",
+    "  end          (optional)  end date; omit to show 'Present'",
+    "  repo         (optional)  full GitHub URL",
+    "  link         (optional)  any other URL (demo / paper / site)",
+    "  tech         (optional)  list of skill tags (colored via skills.json)",
+    "  accent       (optional)  'red' or 'blue' for the timeline dot; default alternates",
+    "",
+    "Newest start date appears at the top. Replace the examples with real work."
+  ],
+  "projects": [
+    {
+      "title": "BioBuilder",
+      "description": "Fully web-based biochemical kinetics editor with 300+ monthly visitors. ",
+      "start": "May 2026",
+      "repo": "https://github.com/MarkAStevens04/cloudflare-kinetics-editor",
+      "tech": ["TypeScript", "React", "Supabase", "cloudflare", "Python", "FastAPI"]
+    },
+    {
+      "title": "RGFN Batched Learning",
+      "description": "Repository for LSD-Flow. Generative chemistry machine-learning model that builds chemicals from reactions and building blocks. ",
+      "start": "May 2026",
+      "link": "https://github.com/MarkAStevens04/RGFN-Fork-v1",
+      "tech": ["Python", "PyTorch", "CUDA", "Autodock Vina"]
+    },
+    {
+      "title": "NTv2 Interpretability",
+      "description": "Discovered latent features in DNA foundation model correlated with diseased DNA by training a sparse autoencoder on NTv2's embeddings.",
+      "start": "Jan 2026",
+      "end": "Feb 2026",
+      "repo": "https://github.com/MarkAStevens04/UHN_Technical_Test",
+      "tech": ["Python", "PyTorch", "git"]
+    },
+    {
+      "title": "Shell from scratch",
+      "description": "Implemented a shell from scratch in C, supporting basic commands, piping, networking, and parent-child processes.",
+      "start": "Jan 2024",
+      "end": "Apr 2024",
+      "repo": "https://github.com/MarkAStevens04/third",
+      "tech": ["C", "git"]
+    }
+  ]
+}
