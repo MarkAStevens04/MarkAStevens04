@@ -37,6 +37,7 @@ SUBDIV = 3                 # backbone points between consecutive CA atoms
 FOCAL = 130.0             # perspective strength
 PX_PER_ANG = 8.3          # world->screen scale
 TRANSPARENT_BG = True     # README hero is transparent so it sits on any theme
+SHOW_CAPTION = True        # the little "HIV-1 PROTEASE / PDB 1HSG" label, bottom-left
 SHADE_BG = (10, 13, 26)   # colour the depth-fog tends toward (shading only)
 CROP_VERTICAL = True      # trim empty space above/below so it's not so tall
 CROP_PAD = 16             # px of breathing room kept around the molecule
@@ -253,12 +254,13 @@ def write_svg(bb, lig_atoms, bonds):
         L.append("".join(g))
 
     # caption: dark outline (paint-order=stroke) so it reads on light OR dark themes
-    L.append(f'<g opacity="0.92" paint-order="stroke" stroke="#0a0e1a" '
-             f'stroke-width="2.6" stroke-linejoin="round" stroke-opacity="0.55">'
-             f'<text x="24" y="{cap_y1:.0f}" font-size="17" letter-spacing="3" '
-             f'fill="#d7e3ff">HIV-1 PROTEASE</text>'
-             f'<text x="24" y="{cap_y2:.0f}" font-size="12" letter-spacing="2" '
-             f'fill="#9fb4d6">PDB 1HSG  ·  homodimer + indinavir</text></g>')
+    if SHOW_CAPTION:
+        L.append(f'<g opacity="0.92" paint-order="stroke" stroke="#0a0e1a" '
+                 f'stroke-width="2.6" stroke-linejoin="round" stroke-opacity="0.55">'
+                 f'<text x="24" y="{cap_y1:.0f}" font-size="17" letter-spacing="3" '
+                 f'fill="#d7e3ff">HIV-1 PROTEASE</text>'
+                 f'<text x="24" y="{cap_y2:.0f}" font-size="12" letter-spacing="2" '
+                 f'fill="#9fb4d6">PDB 1HSG  ·  homodimer + indinavir</text></g>')
     L.append('</svg>')
     os.makedirs(os.path.dirname(OUT_SVG), exist_ok=True)
     open(OUT_SVG, "w", encoding="utf-8").write("\n".join(L))
