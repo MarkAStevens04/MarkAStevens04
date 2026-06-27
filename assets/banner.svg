@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 380" width="1280" height="380" font-family="&#39;Arial Black&#39;, &#39;Helvetica Neue&#39;, Helvetica, Arial, sans-serif" role="img" aria-label="Mark Stevens — generative chemistry, protein design, experimental validation">
+  <defs>
+    <linearGradient id="sweep" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="300" y2="300" spreadMethod="pad">
+      <stop offset="0" stop-color="#000000"></stop>
+      <stop offset="0.40" stop-color="#000000"></stop>
+      <stop offset="0.50" stop-color="#ffffff"></stop>
+      <stop offset="0.60" stop-color="#000000"></stop>
+      <stop offset="1" stop-color="#000000"></stop>
+      
+    </linearGradient>
+    <mask id="band" maskUnits="userSpaceOnUse" x="0" y="0" width="1280" height="380">
+      <rect x="0" y="0" width="1280" height="380" fill="url(#sweep)"></rect>
+    </mask>
+  </defs>
+  <rect x="0" y="0" width="1280" height="380" rx="20" fill="#0d1117"></rect>
+  <g mask="url(#band)">
+    <text x="640" y="214" text-anchor="middle" textLength="1120" lengthAdjust="spacingAndGlyphs" font-weight="900" font-size="190" fill="#ff2d4d" transform="translate(-9,-5)">MARK STEVENS</text>
+    <text x="640" y="214" text-anchor="middle" textLength="1120" lengthAdjust="spacingAndGlyphs" font-weight="900" font-size="190" fill="#1ff0ff" transform="translate(9,5)">MARK STEVENS</text>
+  </g>
+  <text x="640" y="214" text-anchor="middle" textLength="1120" lengthAdjust="spacingAndGlyphs" font-weight="900" font-size="190" fill="#ffffff">MARK STEVENS</text>
+  <line x1="80" y1="254" x2="1200" y2="254" stroke="#ff7a33" stroke-width="3"></line>
+  <g font-weight="600" font-size="26" letter-spacing="1.2" fill="#ff7a33">
+    <text x="80" y="316" text-anchor="start">generative chemistry</text>
+    <text x="640" y="316" text-anchor="middle">protein design</text>
+    <text x="1200" y="316" text-anchor="end">experimental validation</text>
+  </g>
+</svg>
