@@ -17,10 +17,10 @@
 
 <!-- ABOUT  ·  edit this blurb freely -->
 <p align="center">
-  <b>Computational biologist &amp; full-stack developer</b> based at the University of Toronto, working at
+  <b>Computational biologist &amp; full-stack developer</b> based at UC Irvine, working at
   the interface of molecular biology, drug discovery, and software.<br/>
   I build things that span molecular dynamics, structure prediction, and the
-  web apps &amp; pipelines that make them usable — and I founded <b>BioBuilder</b>.
+  web apps &amp; pipelines that make them usable! I also founded <b>BioBuilder</b>.
 </p>
 
 <!-- SOCIAL / CONTACT -->
