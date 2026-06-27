@@ -15,13 +15,12 @@
     <mask id="sweep" maskUnits="userSpaceOnUse" x="0" y="0" width="1914" height="290">
       <rect x="0" y="0" width="1914" height="290" fill="#000000"/>
       <g transform="rotate(-18 957 145)">
-        <rect y="-380" width="300" height="1060" fill="url(#feather)">
+        <rect y="-380" width="360" height="1060" fill="url(#feather)">
           <animate attributeName="x"
-                   values="-900;2100;2100"
+                   values="-960;2160;2160"
                    keyTimes="0;0.62;1"
                    dur="10s"
-                   calcMode="spline"
-                   keySplines="0.45 0 0.2 1; 0 0 1 1"
+                   calcMode="linear"
                    repeatCount="indefinite"/>
         </rect>
       </g>
